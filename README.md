@@ -177,7 +177,5 @@ Accuracy achieved:
 Rangith Kumar
 Python Developer | Machine Learning Enthusiast
 
----
 
-If you want, I can also give a **short GitHub description (2–3 lines)** for the repository title section.
 
