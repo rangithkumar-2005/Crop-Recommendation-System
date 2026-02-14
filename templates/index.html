@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Crop Recommendation</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-image: url("/static/background.jpg");
+            background-size: cover;
+            padding: 30px;
+            text-align: center;
+        }
+        .form-container {
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 30px;
+            border-radius: 10px;
+            display: inline-block;
+        }
+        input, button {
+            margin: 10px;
+            padding: 10px;
+            width: 250px;
+            font-size: 16px;
+        }
+        img {
+            margin: 10px;
+            width: 300px;
+            height: auto;
+            border: 1px solid #ccc;
+        }
+        .result {
+            font-size: 18px;
+            color: green;
+            margin: 20px 0;
+        }
+        .error {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <div class="form-container">
+        <h1>🌾 Crop Recommendation</h1>
+
+        <!-- Prediction text appears here -->
+        {% if prediction_text %}
+            <h2 class="result">🌱 {{ prediction_text }}</h2>
+        {% else %}
+            <h2 style="color: #555;">🔍 Enter soil values and click Predict</h2>
+        {% endif %}
+
+        <!-- Input Form -->
+        <form method="POST" action="/predict">
+            <input type="number" name="N" placeholder="Nitrogen (N)" required><br>
+            <input type="number" name="P" placeholder="Phosphorus (P)" required><br>
+            <input type="number" name="K" placeholder="Potassium (K)" required><br>
+            <input type="number" step="any" name="temperature" placeholder="Temperature (°C)" required><br>
+            <input type="number" step="any" name="humidity" placeholder="Humidity (%)" required><br>
+            <input type="number" step="any" name="ph" placeholder="Soil pH" required><br>
+            <input type="number" step="any" name="rainfall" placeholder="Rainfall (mm)" required><br>
+            <button type="submit">Predict</button>
+            <button type="reset">Reset</button>
+        </form>
+
+        <!-- Plots after prediction -->
+        {% if prediction_text %}
+        <div id="plot-section">
+            <img src="{{ url_for('static', filename=scatter_plot) }}" alt="Scatter Plot">
+            <img src="{{ url_for('static', filename=bar_plot) }}" alt="Bar Chart">
+            <img src="{{ url_for('static', filename=box_plot) }}" alt="Box Plot">
+        </div>
+        {% endif %}
+    </div>
+
+    <script>
+        // Reset removes the prediction and plots
+        document.querySelector("form").addEventListener("reset", function () {
+            const result = document.querySelector(".result");
+            const plotSection = document.getElementById("plot-section");
+            if (result) result.remove();
+            if (plotSection) plotSection.remove();
+        });
+    </script>
+</body>
+</html>
