@@ -2,9 +2,7 @@
 Machine Learning based Crop Recommendation System using Flask. Predicts the best crop based on soil nutrients and environmental conditions, with visualization plots and user-friendly web interface.
 
 
-Here is a **professional GitHub description** for your Crop Recommendation System project, including features and step-by-step instructions to run it in VS Code.
-
-You can copy and paste this into your **README.md** file.
+Here is a **professional GitHub description** for your Crop Recommendation System project, including features and step-by-step instructions to run it in VS Code. 
 
 ---
 
