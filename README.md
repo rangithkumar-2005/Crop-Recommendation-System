@@ -4,8 +4,6 @@ Machine Learning based Crop Recommendation System using Flask. Predicts the best
 
 Here is a **professional GitHub description** for your Crop Recommendation System project, including features and step-by-step instructions to run it in VS Code. 
 
----
-
 # 🌾 Crop Recommendation System using Machine Learning and Flask
 
 ## 📌 Project Description
